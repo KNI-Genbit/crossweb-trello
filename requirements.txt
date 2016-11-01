@@ -1,0 +1,5 @@
+beautifulsoup4==4.5.1
+requests==2.11.1
+lxml==3.6.4
+trello==0.9.1
+python-dateutil==2.5.3

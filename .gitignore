@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# crossweb-trello settings
+.app_key.txt
+.token.txt
