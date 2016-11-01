@@ -105,10 +105,6 @@ def fetch_events(city=None):
                'is_free': is_free}
 
 
-def get_cards(board):
-    pass
-
-
 def get_board_id(trello, board):
     try:
         return trello.boards.get(board)['id']
@@ -162,14 +158,16 @@ def archive_due_cards(trello, idList):
     cards = trello.lists.get_card_filter('open', idList)
     for card in cards:
         if not card['due']:
-            logger.debug("Skip card", card['name'], "because of not due date")
+            logger.debug("Skip card {name} because of not due date".format(name=card['name']))
             continue
         due = dateutil.parser.parse(card['due'])
         if datetime.now() > due.replace(tzinfo=None):
             trello.cards.update_closed(card['id'], 'true')
-            logger.info("Closed old card", card['name'], '(', card['url'], ')')
+            logger.info("Closed old card {name} ({url})".format(name=card['name'],
+                                                                url=card['url']))
         else:
-            logger.debug("Skip fresh card", card['name'], '(', card['url'], ')')
+            logger.debug("Skip fresh card {name} ({url})".format(name=card['name'],
+                                                                 url=card['url']))
 
 
 def main():
