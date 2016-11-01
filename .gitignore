@@ -91,3 +91,4 @@ ENV/
 # crossweb-trello settings
 .app_key.txt
 .token.txt
+cache.sqlite
